@@ -1,0 +1,41 @@
+let form= document.getElementById("form");
+
+let input = document.getElementById("taskInput");
+
+let list = document.getElementById("taskList");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+
+    let taskText = input.value.trim();
+
+    if (taskText === "") {
+        alert("Ajouter une tâche")
+        return;
+    } 
+        
+
+    let li = document.createElement("li");
+    let span = document.createElement("span");
+    span.textContent = taskText;
+
+    let doneBtn = document.createElement("button");
+    doneBtn.textContent = "✔";
+    doneBtn.onclick = function() {
+        span.classList;this.toggle("completed");
+    };
+
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "❌";
+    deleteBtn.onclick = function(){
+        li.remove();
+    };
+    li.appendChild(span);
+    li.appendChild(doneBtn);
+    li.appendChild(deleteBtn);
+
+    list.appendChild(li);
+
+    input.value = "";
+});
